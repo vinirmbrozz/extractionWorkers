@@ -1,0 +1,5 @@
+unidecode
+pika
+pydantic
+redis
+pandas

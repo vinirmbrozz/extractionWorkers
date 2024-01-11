@@ -1,0 +1,17 @@
+[
+    { "enterpriseName": "RESIDENCIAL PARQUE VILLE ",
+      "enterpriseId": 471,
+      "qtyUnits": 4
+    },
+
+    { "enterpriseName": "SPE NOVA ERA LOTEAMENTO",
+      "enterpriseId": 2,
+      "qtyUnits": 120
+    },
+    
+    {
+      "enterpriseName": "MV RESORT ", 
+      "enterpriseId": 218, 
+      "qtyUnits": 9
+    }
+]

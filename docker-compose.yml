@@ -1,0 +1,160 @@
+version: "3"
+services:
+  rabbitmq:
+    image: rabbitmq:management
+    restart: always
+    environment:
+      RABBITMQ_DEFAULT_USER: usramqp
+      RABBITMQ_DEFAULT_PASS: Qc6ZxJSBrhRVsrY
+    volumes:
+        - ./var_rabbitmq:/var/lib/rabbitmq
+        - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+    ports:
+      - '127.0.0.1:5672:5672'
+      - '127.0.0.1:15672:15672'
+
+  redis:
+    image: redis
+    restart: always
+    command: redis-server --save 20 1
+    volumes:
+      - ./cache:/data
+    ports:
+          - '127.0.0.1:6379:6379'
+
+  loader:
+    image: sg_intel_vendas-loader:v2
+    volumes:
+      - ./logs/loader:/app/logs
+    restart: always
+
+  intel:
+    image: sg_intel_vendas-intel:v2
+    volumes:
+      - ./logs/intel:/app/logs
+    restart: always
+
+  dashboard:
+    image: sg_intel_vendas-dashboard:v2
+    volumes:
+      - ./logs/dashboard:/app/logs
+    ports:
+      - 8502:8501
+    restart: always
+  
+  vendas_velocidadevendas:
+    image: sg_intel_vendas-vendas_velocidadevendas:v2
+    volumes:
+      - ./logs/trilhas/vendas_velocidadevendas:/app/logs
+    restart: always
+  
+  vendas_vgvperiodo:
+    image: sg_intel_vendas-vendas_vgvperiodo:v2
+    volumes:
+      - ./logs/trilhas/vendas_vgvperiodo:/app/logs
+    restart: always
+
+  vendas_vgvempresa:
+    image: sg_intel_vendas-vendas_vgvempresa:v2
+    volumes:
+      - ./logs/trilhas/vendas_vgvempresa:/app/logs
+    restart: always
+
+  vendas_vgv:
+    image: sg_intel_vendas-vendas_vgv:v2
+    volumes:
+      - ./logs/trilhas/vendas_vgv:/app/logs
+    restart: always
+
+  vendas_units_estoque_empreendimento:
+    image: sg_intel_vendas-vendas_units_estoque_empreendimento:v2
+    volumes:
+      - ./logs/trilhas/vendas_units_estoque_empreendimento:/app/logs
+    restart: always
+
+  vendas_units_estoque_empresa:
+    image: sg_intel_vendas-vendas_units_estoque_empresa:v2
+    volumes:
+      - ./logs/trilhas/vendas_units_estoque_empresa:/app/logs
+    restart: always
+
+  vendas_m2_estq:
+    image: sg_intel_vendas-vendas_m2_estq:v2
+    volumes:
+      - ./logs/trilhas/vendas_m2_estq:/app/logs
+    restart: always
+
+  vendas_corretor:
+    image: sg_intel_vendas-vendas_corretor:v2
+    volumes:
+      - ./logs/trilhas/vendas_corretor:/app/logs
+    restart: always
+ 
+
+  vendas_m2:
+    image: sg_intel_vendas-vendas_m2:v2
+    volumes:
+      - ./logs/trilhas/vendas_m2:/app/logs
+    restart: always
+
+ 
+
+  vendas_customers_cidade:
+    image: sg_intel_vendas-vendas_customers_cidade:v2
+    volumes:
+      - ./logs/trilhas/vendas_customers_cidade:/app/logs
+    restart: always
+
+  vendas_enterprises_cidade:
+    image: sg_intel_vendas-vendas_enterprises_cidade:v2
+    volumes:
+      - ./logs/trilhas/vendas_enterprises_cidade:/app/logs
+    restart: always
+
+  # vendas_estoque_uf:
+  #   image: sg_intel_vendas-vendas_estoque_uf:v2
+  #   volumes:
+  #     - ./logs/trilhas/vendas_estoque_uf:/app/logs
+  #   restart: always
+
+  vendas_idade:
+    image: sg_intel_vendas-vendas_idade:v2
+    volumes:
+      - ./logs/trilhas/vendas_idade:/app/logs
+    restart: always
+  
+  vendas_profissao:
+    image: sg_intel_vendas-vendas_profissao:v2
+    volumes:
+      - ./logs/trilhas/vendas_profissao:/app/logs
+    restart: always
+
+  vendas_sexo:
+    image: sg_intel_vendas-vendas_sexo:v2
+    volumes:
+      - ./logs/trilhas/vendas_sexo:/app/logs
+    restart: always
+  
+  vendas_tipo_imovel:
+    image: sg_intel_vendas-vendas_tipo_imovel:v2
+    volumes:
+      - ./logs/trilhas/vendas_tipo_imovel:/app/logs
+    restart: always
+  
+  vendas_vgvempreendqty:
+    image: sg_intel_vendas-vendas_vgvempreendqty:v2
+    volumes:
+      - ./logs/trilhas/vendas_vgvempreendqty:/app/logs
+    restart: always
+
+  vendas_vgvperiodoqty:
+    image: sg_intel_vendas-vendas_vgvperiodoqty:v2
+    volumes:
+      - ./logs/trilhas/vendas_vgvperiodoqty:/app/logs
+    restart: always
+
+  vendas_vgvempresaqty:
+    image: sg_intel_vendas-vendas_vgvempresaqty:v2
+    volumes:
+      - ./logs/trilhas/vendas_vgvempresaqty:/app/logs
+    restart: always
